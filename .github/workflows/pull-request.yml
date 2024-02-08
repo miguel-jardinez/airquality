@@ -1,10 +1,6 @@
 name: "Pull request"
 
 on:
-  push:
-    branches:
-      - develop
-
   pull_request:
     branches:
       - main
@@ -51,6 +47,9 @@ jobs:
       - name: install dependencies
         run: yarn install
 
+      - name: upgrade dependencies
+        run: yarn upgrade
+
       - name: test:ci
         run: yarn test:ci
 
@@ -61,8 +60,8 @@ jobs:
         uses: SonarSource/sonarcloud-github-action@master
         with:
           args: >
-            -Dsonar.organization=miguel-jardinez
-            -Dsonar.projectKey=miguel-jardinez_airquality
+            -Dsonar.organization=${{secrets.SONAR_ORGANIZATION}}
+            -Dsonar.projectKey=${{secrets.SONAR_PROJECT_KEY}}
             -Dsonar.sources=src
             -Dsonar.host.url=https://sonarcloud.io
             -Dsonar.javascript.lcov.reportPaths=./coverage/lcov.info
