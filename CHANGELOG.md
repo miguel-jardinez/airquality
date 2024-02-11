@@ -1,5 +1,11 @@
 # airquality_project
 
+## 1.3.1
+
+### Patch Changes
+
+- Bug in http protocol to cal open weather api
+
 ## 1.3.0
 
 ### Minor Changes
