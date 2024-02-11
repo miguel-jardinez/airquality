@@ -25,7 +25,7 @@ export const useAirQualityDetails = ({ id }: useAirQualityDetailsProps) => {
 
   const { measure } = useGetMeasure({
     location: location.status === ResourcesStatus.SUCCESS ? location.data : null,
-    sensorSelected: sensorSelected || '',
+    sensorSelected: sensorSelected ?? '',
     dateSelected,
   });
 

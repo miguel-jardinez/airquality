@@ -80,7 +80,7 @@ describe('useGetLocation', () => {
     await waitForNextUpdate();
 
     // Assertion
-    // expect(result.current.location.status).toEqual(ResourcesStatus.ERROR);
+    expect(result.current.location.status).toEqual(ResourcesStatus.ERROR);
     expect(result.current.sensors.status).toEqual(ResourcesStatus.ERROR);
     expect(result.current.sensorSelected).toBeNull();
   });

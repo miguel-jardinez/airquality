@@ -31,7 +31,6 @@ export const QaDrawerLocation: React.FC<QaDrawerLocationProps> = (
   },
 ) => {
   const { location: response } = useGetLocation({ id: currentLocation.toString() });
-  // const { response } = useGetMeasuredByLocation({ id: currentLocation });
 
   if (response.status === ResourcesStatus.LOADING) {
     return <QaLoading />;
