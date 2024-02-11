@@ -4,6 +4,7 @@ import { useLocationProvider } from '@quality/providers/LocationProvider/useLoca
 import { optionsDates } from '@quality/utils/dates';
 import { useGetLocation } from '@quality/hooks/useGetLocation';
 import { useGetMeasure } from '@quality/hooks/useGetMeasure';
+import { useGetAqiValue } from '@quality/hooks/useGetAqiValue';
 
 interface useAirQualityDetailsProps {
   id: string;
@@ -19,8 +20,12 @@ export const useAirQualityDetails = ({ id }: useAirQualityDetailsProps) => {
     location,
     setSensorSelected,
   } = useGetLocation({
-    coords: coords.status === ResourcesStatus.SUCCESS ? coords.data : null,
+    coords: coords.status === ResourcesStatus.SUCCESS ? coords.data : undefined,
     id,
+  });
+
+  const { aqi } = useGetAqiValue({
+    coords: coords.status === ResourcesStatus.SUCCESS ? coords.data : null,
   });
 
   const { measure } = useGetMeasure({
@@ -36,5 +41,6 @@ export const useAirQualityDetails = ({ id }: useAirQualityDetailsProps) => {
     setSensorSelected,
     location,
     sensorSelected,
+    aqi,
   };
 };

@@ -5,29 +5,17 @@ import { useAirQualityDetails } from '@quality/features/airQualityDetails/hooks/
 import { SearchIcon } from '@chakra-ui/icons';
 import { ResourcesStatus } from '@quality/utils/Resources';
 import {
-  Box,
-  Card,
-  Container,
-  Heading,
-  VStack,
-  Text,
-  SimpleGrid,
-  Button, Stack,
+  Box, Button, Card, Container, Heading, SimpleGrid, Stack, Text, VStack,
 } from '@chakra-ui/react';
 import dayjs from 'dayjs';
-import {
-  Map,
-} from 'react-map-gl';
+import { Map } from 'react-map-gl';
 import { dateDefaultFormat, dateFromNow } from '@quality/utils/dates';
-import {
-  getAirQualityLevel,
-  QAPollutant,
-} from '@quality/utils/qaCalculator';
 import { NoLocationPage } from '@quality/features/noLocation/noLocationPage';
 import { LineChart } from '@quality/features/airQualityDetails/components/lineChart';
-import AirQualityInfo from '@quality/features/airQualityDetails/components/airQualityInfo';
 import { QaLoading } from '@quality/components';
 import { EmptyDataAirQualityDetails } from '@quality/features/airQualityDetails/components/emptyDataAirQualityDetails';
+import { WeatherDetails } from '@quality/features/airQualityDetails/components/weatherDetails';
+import { AirQualityInfo } from '@quality/features/airQualityDetails/components/airQualityInfo';
 
 export const AirQualityDetailsPage = () => {
   const router = useRouter();
@@ -39,7 +27,7 @@ export const AirQualityDetailsPage = () => {
     measure,
     setDateSelected,
     setSensorSelected,
-    sensorSelected,
+    aqi,
   } = useAirQualityDetails({ id: useSearch.id ?? '' });
 
   // Error if the request fails or location permission is not allowed
@@ -69,14 +57,6 @@ export const AirQualityDetailsPage = () => {
 
   const locationData = location.data.results[0];
 
-  // Pollutant and quality air
-  const pollutant = sensors
-    .data
-    .find((data) => (sensorSelected && data.parameter.id.toString() === sensorSelected));
-  const pollutantId = pollutant?.parameter?.name as QAPollutant;
-  const pollutantValue = measure.data.at(-1)?.value ?? 0;
-  const quality = getAirQualityLevel(pollutantId, pollutantValue);
-
   // Chart Configuration
   const labels = measure.data.map((measure) => {
     const date = dayjs(measure.coverage.datetimeFrom.local);
@@ -93,7 +73,7 @@ export const AirQualityDetailsPage = () => {
             <Stack direction={['column', 'row']} justifyContent="space-between">
               <VStack alignItems="flex-start">
                 <Text>{locationData.country.name} / {locationData.locality}</Text>
-                <Heading>{locationData.name}</Heading>
+                <Heading color="green.600">{locationData.name}</Heading>
               </VStack>
               <Button
                 onClick={() => router.push('/map')}
@@ -145,6 +125,10 @@ export const AirQualityDetailsPage = () => {
         </Box>
       </Card>
 
+      <Stack>
+        <WeatherDetails />
+      </Stack>
+
       <Stack direction={['column-reverse', 'row']}>
         <Card width={['100%', '50%']} padding={6}>
           <Heading mb={8}>Latest Readings</Heading>
@@ -160,10 +144,9 @@ export const AirQualityDetailsPage = () => {
         <Card width={['100%', '50%']} p={6}>
           <Heading>Air Quality</Heading>
           <AirQualityInfo
-            quality={quality}
-            measure={measure.data}
-            pollutant={pollutant}
+            aqiList={aqi}
           />
+
         </Card>
       </Stack>
 
