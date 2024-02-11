@@ -33,10 +33,13 @@ Brief description of the project, its purpose, and main functionalities.
 |:-----------------------------------------------:|:------------------------------------------------:|:--------------------------------------------------:|
 | <img src="docs/images/main.png" width="250px"/> | <img src="docs/images/chart.png" width="250px"/> | <img src="docs/images/details.png" width="250px"/> |
 
-|                      Information                       |                      maps                       |
-|:------------------------------------------------------:|:-----------------------------------------------:|
-| <img src="docs/images/information.png" width="250px"/> | <img src="docs/images/maps.png" width="250px"/> |
+|                      Information                       |                      maps                       |                   No Sensor near                   |
+|:------------------------------------------------------:|:-----------------------------------------------:|:--------------------------------------------------:|
+| <img src="docs/images/information.png" width="250px"/> | <img src="docs/images/maps.png" width="250px"/> | <img src="docs/images/no-data.png" width="250px"/> |
 
+|                      Error Page                       |
+|:-----------------------------------------------------:|
+| <img src="docs/images/error-page.png" width="250px"/> |
 
 ## Development Process
 ### Code Standardization
@@ -76,6 +79,42 @@ after run
 ````
 yarn dev
 ````
+
+## API Endpoints
+
+#### GET /location
+
+Returns information about all locations.
+
+**Query Parameters:**
+- `coords`: string (Example: "1,1"). Coordinates to filter nearby locations.
+
+---
+
+#### GET /location/{id}
+
+Returns information about a specific location.
+
+**Path Parameters:**
+- `id`: string. Unique identifier of the location.
+
+---
+
+#### GET /measure/{id}/measurements
+
+Returns measurements associated with a specific location.
+
+**Path Parameters:**
+- `id`: string. Unique identifier of the location.
+
+**Query Parameters:**
+- `period_name`: string. Name of the time period for the measurements.
+- `limit`: number. Limit of measurements to return.
+- `parameters_id`: string. Unique identifier of the parameter to measure.
+- `date_from`: date. Start date of the time interval for the measurements.
+- `date_to`: date. End date of the time interval for the measurements.
+
+---
 
 ## Contribution
 If you wish to contribute to this project, follow these steps:
