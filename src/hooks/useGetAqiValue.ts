@@ -1,4 +1,4 @@
-import {useCallback, useEffect, useState} from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { axiosAqiClient } from '@quality/utils/axiosAqiClient';
 import { AQIResponse } from '@quality/types/aqi/AqiResponse';
 import { Resources, ResourcesStatus } from '@quality/utils/Resources';
