@@ -1,36 +1,89 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Air Quality Index
 
-## Getting Started
+## Description
+Brief description of the project, its purpose, and main functionalities.
 
-First, run the development server:
+## Technologies Used
+- **UI**:
+    - [Chakra UI](https://chakra-ui.com/)
+    - [Chakra UI Icons](https://chakra-ui.com/docs/media-and-icons/icon)
+    - [Lottie](https://airbnb.io/lottie/#/)
+    - [Mapbox](https://www.mapbox.com/)
+    - [Chart.js](https://www.chartjs.org/)
+- **Backend**:
+    - [Next.js](https://nextjs.org/)
+- **Date and Time**:
+    - [Day.js](https://day.js.org/)
+- **Frontend Framework**:
+    - [Next.js](https://nextjs.org/)
+- **Code Standardization**:
+    - [ESLint](https://eslint.org/)
+    - [Husky](https://typicode.github.io/husky/#/)
+- **Monitoring**:
+    - [SonarCloud](https://sonarcloud.io/)
+- **Testing**:
+    - [Jest](https://jestjs.io/)
+    - [React Testing Library](https://testing-library.com/docs/react-testing-library/intro/)
+- **Deployment**:
+    - [GitHub Actions](https://github.com/features/actions)
+- **Versioning**:
+    - [Changelog CLI](https://changelog.md/cli/)
 
-```bash
-npm run dev
-# or
+|                      Main                       |                      Chart                       |                      Details                       |
+|:-----------------------------------------------:|:------------------------------------------------:|:--------------------------------------------------:|
+| <img src="docs/images/main.png" width="250px"/> | <img src="docs/images/chart.png" width="250px"/> | <img src="docs/images/details.png" width="250px"/> |
+
+|                      Information                       |                      maps                       |
+|:------------------------------------------------------:|:-----------------------------------------------:|
+| <img src="docs/images/information.png" width="250px"/> | <img src="docs/images/maps.png" width="250px"/> |
+
+
+## Development Process
+### Code Standardization
+- We use ESLint to maintain clean and consistent code.
+- Husky helps us run scripts on commits to ensure coding standards are adhered to.
+
+### Monitoring and Testing
+- SonarCloud is used for code quality monitoring.
+- Jest is used for running unit tests.
+- React Testing Library is used for testing React components.
+
+### Deployment
+- GitHub Actions is used to automate the deployment process.
+    - Actions are triggered on the develop branch to deploy to staging.
+    - Pull requests trigger linting checks and code coverage.
+    - Pushes to main branch are checked for linting, coverage, and deployed to production.
+
+## Installation
+1. Clone this repository.
+2. Install dependencies using yarn:
+
+````
+yarn install
+````
+````
 yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+````
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Usage
+put the correct value in the .env
+````
+API_KEY=
+NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN=
+````
+after run
+````
+yarn dev
+````
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## Contribution
+If you wish to contribute to this project, follow these steps:
+1. Fork the repository.
+2. Create a new branch (`git checkout -b feature/new-feature`).
+3. Make your changes and commit (`git commit -am 'Add new feature'`).
+4. Push to the branch (`git push origin feature/new-feature`).
+5. Create a new Pull Request.
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## License
+This project is licensed under the [MIT License](https://opensource.org/licenses/MIT).
