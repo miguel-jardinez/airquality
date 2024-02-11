@@ -27,6 +27,7 @@ import { NoLocationPage } from '@quality/features/noLocation/noLocationPage';
 import { LineChart } from '@quality/features/airQualityDetails/components/lineChart';
 import AirQualityInfo from '@quality/features/airQualityDetails/components/airQualityInfo';
 import { QaLoading } from '@quality/components';
+import { EmptyDataAirQualityDetails } from '@quality/features/airQualityDetails/components/emptyDataAirQualityDetails';
 
 export const AirQualityDetailsPage = () => {
   const router = useRouter();
@@ -60,6 +61,12 @@ export const AirQualityDetailsPage = () => {
     || location.status !== ResourcesStatus.SUCCESS
   ) return;
 
+  if (
+    location.data.results.length === 0
+  ) {
+    return <EmptyDataAirQualityDetails />;
+  }
+
   const locationData = location.data.results[0];
 
   // Pollutant and quality air
@@ -82,7 +89,7 @@ export const AirQualityDetailsPage = () => {
     <Container maxW="container.xl" padding={4}>
       <Card mb={4}>
         <Box>
-          <Box bg="blue.50" padding={6}>
+          <Box bg="green.50" padding={6}>
             <Stack direction={['column', 'row']} justifyContent="space-between">
               <VStack alignItems="flex-start">
                 <Text>{locationData.country.name} / {locationData.locality}</Text>

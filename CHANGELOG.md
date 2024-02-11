@@ -1,5 +1,15 @@
 # airquality_project
 
+## 1.2.0
+
+### Minor Changes
+
+- e656ecb: Add documentation to the application
+
+### Patch Changes
+
+- 5492ab1: Refactor code and update documentation for backend endpoints in jest
+
 ## 1.1.0
 
 ### Minor Changes
