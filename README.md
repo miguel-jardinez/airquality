@@ -3,6 +3,9 @@
 ## Description
 Brief description of the project, its purpose, and main functionalities.
 
+## Test Coverage Tool
+- [Sonar Cloud](https://sonarcloud.io/project/overview?id=miguel-jardinez_airquality)
+
 ## Check Application Online
 - [AirQuality](https://airquality-miguel-jardinez.vercel.app/)
 
