@@ -24,4 +24,3 @@ export const airQualityIndex = {
 export type QAAirQualityLabels = keyof typeof airQualityIndex;
 
 export const airPollutantList: string[] = ['um050', 'no2', 'no', 'o3', 'pm25', 'nox', 'so2', 'pm10', 'co'];
-

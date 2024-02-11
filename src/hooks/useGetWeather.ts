@@ -1,4 +1,4 @@
-import {useCallback, useEffect, useState} from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { Resources, ResourcesStatus } from '@quality/utils/Resources';
 import { WeatherResponse } from '@quality/types/aqi/Weather';
 import { axiosAqiClient } from '@quality/utils/axiosAqiClient';
