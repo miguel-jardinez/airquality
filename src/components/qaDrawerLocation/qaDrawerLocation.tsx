@@ -1,6 +1,7 @@
 import {
   Drawer,
-  DrawerBody, DrawerCloseButton,
+  DrawerBody,
+  DrawerCloseButton,
   DrawerContent,
   DrawerFooter,
   DrawerHeader,
@@ -10,11 +11,11 @@ import {
   Text,
   VStack,
 } from '@chakra-ui/react';
-import { useGetMeasuredByLocation } from '@quality/hooks/useGetMeasuredByLocation';
 import { ResourcesStatus } from '@quality/utils/Resources';
 import { Link } from '@chakra-ui/next-js';
 import { QaLoading } from '@quality/components';
 import { dateFromNow } from '@quality/utils/dates';
+import { useGetLocation } from '@quality/hooks/useGetLocation';
 
 interface QaDrawerLocationProps {
   currentLocation: number;
@@ -29,7 +30,8 @@ export const QaDrawerLocation: React.FC<QaDrawerLocationProps> = (
     isOpen,
   },
 ) => {
-  const { response } = useGetMeasuredByLocation({ id: currentLocation });
+  const { location: response } = useGetLocation({ id: currentLocation.toString() });
+  // const { response } = useGetMeasuredByLocation({ id: currentLocation });
 
   if (response.status === ResourcesStatus.LOADING) {
     return <QaLoading />;
@@ -102,7 +104,7 @@ export const QaDrawerLocation: React.FC<QaDrawerLocationProps> = (
             paddingY={3}
             paddingX={5}
             borderRadius={5}
-            background="blue.400"
+            background="green.400"
             href={`/location/${location.id}`}
           >
             More details
