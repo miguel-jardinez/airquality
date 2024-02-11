@@ -1,5 +1,11 @@
 # airquality_project
 
+## 1.3.0
+
+### Minor Changes
+
+- Add new api for weather and air quality index
+
 ## 1.2.0
 
 ### Minor Changes

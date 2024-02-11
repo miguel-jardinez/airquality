@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { Resources, ResourcesStatus } from '@quality/utils/Resources';
 import axios from 'axios';
 import {
@@ -8,8 +8,8 @@ import {
 } from '@quality/types/LocationDetails';
 
 interface useGetLocationByCoordsProps {
-  coords?: GeolocationCoordinates | null
-  id?: string
+  coords?: GeolocationCoordinates;
+  id?: string;
 }
 
 export const useGetLocation = ({ coords, id }: useGetLocationByCoordsProps) => {
@@ -19,7 +19,7 @@ export const useGetLocation = ({ coords, id }: useGetLocationByCoordsProps) => {
   });
   const [sensorSelected, setSensorSelected] = useState<string | null>(null);
 
-  const setDataState = (data: LocationDetails) => {
+  const setDataState = useCallback((data: LocationDetails) => {
     if (data.results.length > 0) {
       const { sensors } = data.results[0];
 
@@ -31,9 +31,9 @@ export const useGetLocation = ({ coords, id }: useGetLocationByCoordsProps) => {
       setLocation({ status: ResourcesStatus.SUCCESS, data });
       setSensorSelected('');
     }
-  };
+  }, []);
 
-  useEffect(() => {
+  const getLocationById = useCallback((id: string | undefined) => {
     if (!id) return;
     axios.get<LocationDetailsResponse>(`/api/locations/${id}`)
       .then((data) => {
@@ -44,9 +44,9 @@ export const useGetLocation = ({ coords, id }: useGetLocationByCoordsProps) => {
         setLocation({ status: ResourcesStatus.ERROR, message: e.message });
         setSensorSelected(null);
       });
-  }, [id]);
+  }, [setDataState]);
 
-  useEffect(() => {
+  const getLocationByCoords = useCallback((coords: GeolocationCoordinates | undefined) => {
     if (!coords || id) return;
     axios.get<LocationDetailsResponse>(`/api/locations?coords=${coords.latitude},${coords.longitude}`)
       .then((data) => {
@@ -56,7 +56,15 @@ export const useGetLocation = ({ coords, id }: useGetLocationByCoordsProps) => {
         setSensors({ status: ResourcesStatus.ERROR, message: e.message });
         setSensorSelected(null);
       });
-  }, [coords, id]);
+  }, [id, setDataState]);
+
+  useEffect(() => {
+    getLocationById(id);
+  }, [getLocationById, id]);
+
+  useEffect(() => {
+    getLocationByCoords(coords);
+  }, [coords, getLocationByCoords]);
 
   return {
     location,

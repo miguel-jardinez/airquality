@@ -6,6 +6,14 @@ Brief description of the project, its purpose, and main functionalities.
 ## Check Application Online
 - [AirQuality](https://airquality-miguel-jardinez.vercel.app/)
 
+### Link with updated Data
+- [PEMBU-15 | CDMX](https://airquality-miguel-jardinez.vercel.app/location/356290)
+- [PEMBU-12 | CDMX](https://airquality-miguel-jardinez.vercel.app/location/352972)
+- [CDMX 2 | CDMX](https://airquality-miguel-jardinez.vercel.app/location/253827)
+
+## Apis Used
+- [Open Weather](https://openweathermap.org/)
+- [OpenQA](https://openaq.org/)
 
 ## Technologies Used
 - **UI**:

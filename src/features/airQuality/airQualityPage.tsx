@@ -31,7 +31,7 @@ export const AirQualityPage = () => {
   return (
     <>
       <QaDrawerLocation
-        currentLocation={currentLocation ?? 0}
+        currentLocation={currentLocation ?? undefined}
         isOpen={isOpen}
         onClose={onClose}
       />
