@@ -18,7 +18,7 @@ import { dateFromNow } from '@quality/utils/dates';
 import { useGetLocation } from '@quality/hooks/useGetLocation';
 
 interface QaDrawerLocationProps {
-  currentLocation: number;
+  currentLocation?: number;
   isOpen: boolean;
   onClose: () => void;
 }
@@ -30,7 +30,7 @@ export const QaDrawerLocation: React.FC<QaDrawerLocationProps> = (
     isOpen,
   },
 ) => {
-  const { location: response } = useGetLocation({ id: currentLocation.toString() });
+  const { location: response } = useGetLocation({ id: currentLocation?.toString() });
 
   if (response.status === ResourcesStatus.LOADING) {
     return <QaLoading />;
