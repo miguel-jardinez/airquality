@@ -3,6 +3,7 @@
 ## Description
 Brief description of the project, its purpose, and main functionalities.
 
+
 ## Test Coverage Tool
 - [Sonar Cloud](https://sonarcloud.io/project/overview?id=miguel-jardinez_airquality)
 
@@ -17,6 +18,7 @@ Brief description of the project, its purpose, and main functionalities.
 ## Apis Used
 - [Open Weather](https://openweathermap.org/)
 - [OpenQA](https://openaq.org/)
+
 
 ## Technologies Used
 - **UI**:
